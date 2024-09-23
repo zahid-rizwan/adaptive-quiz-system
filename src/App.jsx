@@ -1,18 +1,31 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Sidebar from './components/Sidebar'
+import Header from './components/Header'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Toggle Sidebar function
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
-    <>
-        <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-    </>
-  )
+    <div className="flex h-screen bg-white overflow-hidden">
+      {/* Sidebar */}
+      <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+
+      {/* Main content */}
+      <div className="flex-1 flex flex-col">
+        <Header toggleSidebar={toggleSidebar} />
+        <main className="flex-1 p-4 bg-gray-100">
+          <h1 className="text-2xl font-bold">Student Dashboard</h1>
+          {/* Add your content here */}
+        </main>
+      </div>
+    </div>
+  );
 }
 
 export default App
