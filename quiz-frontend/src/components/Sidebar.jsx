@@ -1,73 +1,118 @@
-import React from 'react';
-import { FaHome, FaBook, FaUserAlt, FaChartLine, FaSignOutAlt } from 'react-icons/fa';
-
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import logo from "../assets/images/logo.png";
+import { MdSpaceDashboard } from "react-icons/md";
+import { FaBell } from "react-icons/fa6";
+import { BsBarChart } from "react-icons/bs";
+import { CiLogout } from "react-icons/ci";
+import sidebarSupportImg from '../assets/images/sidebar-support-img.svg';
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
-    <div>
-      {/* Vertical Sidebar for Large Screens */}
-      <div className="hidden md:flex flex-col h-screen p-4 bg-white w-64 border-r">
-        {/* Sidebar Header */}
-        <div className="text-gray-600 text-lg font-bold mb-6">
-          Student Dashboard
+    <div className="w-full flex flex-col justify-between px-3 shadow-xl h-[100vh]">
+      <div className="w-full">
+        <div className="w-full flex gap-[10px] items-center my-3">
+          <img src={logo} alt="" className="h-[50px] w-[50px]" />
+          <p className="text-xl font-bold">AQS</p>
         </div>
-
-        {/* Sidebar Items */}
-        <nav className="flex flex-col space-y-4">
-          <a href="/" className="flex items-center space-x-2 text-gray-600 hover:bg-blue-100
-           p-2 rounded">
-            <FaHome />
-            <span>Home</span>
-          </a>
-
-          <a href="/quizzes" className="flex items-center space-x-2 text-gray-600 hover:bg-blue-100 p-2 rounded">
-            <FaBook />
-            <span>Quizzes</span>
-          </a>
-
-          <a href="/profile" className="flex items-center space-x-2 text-gray-600 hover:bg-blue-100 p-2 rounded">
-            <FaUserAlt />
-            <span>Profile</span>
-          </a>
-
-          <a href="/progress" className="flex items-center space-x-2 text-gray-600 hover:bg-blue-100 p-2 rounded">
-            <FaChartLine />
-            <span>Progress</span>
-          </a>
-        </nav>
-
-        {/* Sidebar Footer with Logout */}
-        <div className="mt-auto">
-          <a href="/logout" className="flex items-center space-x-2 text-gray-600 hover:bg-red-600 p-2 rounded">
-            <FaSignOutAlt />
-            <span>Logout</span>
-          </a>
+        <div className="w-full flex flex-col mt-4">
+          <div
+            className={`group flex my-2 gap-[10px] items-center px-4 py-3 ${
+              location.pathname === "/dashboard" ||
+              location.pathname === "/dashboard/"
+                ? "bg-primary shadow-lg"
+                : "bg-white"
+            } hover:bg-primary hover:text-white hover:shadow-xl rounded-lg cursor-pointer`}
+            onClick={()=>navigate('/dashboard')}
+          >
+            <MdSpaceDashboard
+              className={` ${
+                location.pathname === "/dashboard" ||
+                location.pathname === "/dashboard/"
+                  ? "text-white"
+                  : "text-primary"
+              }  group-hover:text-white text-lg`}
+            />
+            <p
+              className={` ${
+                location.pathname === "/dashboard" ||
+                location.pathname === "/dashboard/"
+                  ? "text-white"
+                  : "text-secondary"
+              } group-hover:text-white text-base`}
+            >
+              Dashboard
+            </p>
+          </div>
+          <div
+            className={`group flex my-2 gap-[10px] items-center px-4 py-3 ${
+              location.pathname === "/dashboard/notification" ||
+              location.pathname === "/dashboard/notification/"
+                ? "bg-primary shadow-lg"
+                : "bg-white"
+            } hover:bg-primary hover:text-white hover:shadow-xl rounded-lg cursor-pointer`}
+          >
+            <FaBell
+              className={` ${
+                location.pathname === "/dashboard/notification" ||
+                location.pathname === "/dashboard/notification/"
+                  ? "text-white"
+                  : "text-primary"
+              }  group-hover:text-white text-lg`}
+            />
+            <p
+              className={` ${
+                location.pathname === "/dashboard/notification" ||
+                location.pathname === "/dashboard/notification/"
+                  ? "text-white"
+                  : "text-secondary"
+              } group-hover:text-white text-base`}
+            >
+              Notifications
+            </p>
+          </div>
+          <div
+            className={`group flex my-2 gap-[10px] items-center px-4 py-3 ${
+              location.pathname === "/dashboard/quiz" ||
+              location.pathname === "/dashboard/quiz/"
+                ? "bg-primary shadow-lg"
+                : "bg-white"
+            } hover:bg-primary hover:text-white hover:shadow-xl rounded-lg cursor-pointer`}
+          >
+            <BsBarChart
+              className={` ${
+                location.pathname === "/dashboard/quiz" ||
+                location.pathname === "/dashboard/quiz/"
+                  ? "text-white"
+                  : "text-primary"
+              }  group-hover:text-white text-lg`}
+            />
+            <p
+              className={` ${
+                location.pathname === "/dashboard/quiz" ||
+                location.pathname === "/dashboard/quiz/"
+                  ? "text-white"
+                  : "text-secondary"
+              } group-hover:text-white text-base`}
+            >
+              Quiz History
+            </p>
+          </div>
         </div>
       </div>
-
-      {/* Horizontal Navbar for Mobile Screens */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full bg-white flex justify-around p-2">
-        <a href="/" className="flex flex-col items-center space-y-1 text-gray-600 hover:bg-blue-100 p-2 rounded">
-          <FaHome />
-          <span className="text-xs">Home</span>
-        </a>
-
-        <a href="/quizzes" className="flex flex-col items-center space-y-1 text-gray-600 hover:bg-blue-100 p-2 rounded">
-          <FaBook />
-          <span className="text-xs">Quizzes</span>
-        </a>
-
-        <a href="/profile" className="flex flex-col items-center space-y-1 text-gray-600 hover:bg-blue-100 p-2 rounded">
-          <FaUserAlt />
-          <span className="text-xs">Profile</span>
-        </a>
-
-        <a href="/progress" className="flex flex-col items-center space-y-1 text-gray-600 hover:bg-blue-100 p-2 rounded">
-          <FaChartLine />
-          <span className="text-xs">Progress</span>
-        </a>
-
-       
-      </div>
+      {/* <div className="w-full ">
+        <div className="w-full bg-primary rounded-2xl p-5">
+            <h1 className="text-white text-xl font-semibold my-1">Support 24/7</h1>
+            <p className=" text-white">Contacts us anytime</p>
+            <button className="text-primary bg-white rounded-lg px-5 my-2 py-1 relative z-[3]">Start</button>
+            <img src={sidebarSupportImg} alt="" className="h-[130px] w-[150px] relative z-[0] right-[-40px] mt-[-50px]" />
+        </div>
+        <div className="flex gap-[10px] items-center my-4 px-2 cursor-pointer">
+          <CiLogout className="text-xl text-red-400"/>
+          <p className="text-base text-red-400">Logout</p>
+        </div>
+      </div> */}
     </div>
   );
 };
