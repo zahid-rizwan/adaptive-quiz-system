@@ -5,6 +5,7 @@ import Login from "./views/login";
 import SignUp from "./views/signup";
 import { Toaster } from "react-hot-toast";
 import DashboardLayout from "./views/dashboard/dashboardLayout";
+import QuizPage from "./views/dashboard/QuizPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/dashboard/*" element={<DashboardLayout />} />
+        <Route path="/quiz-page*" element={<QuizPage/>} />
       </Routes>
       <Toaster />
     </div>

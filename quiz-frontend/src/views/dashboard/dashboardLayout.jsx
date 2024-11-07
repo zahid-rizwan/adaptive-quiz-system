@@ -4,6 +4,7 @@ import TopBar from "../../components/topbar";
 import Profile from "./profile";
 import QuizView from "./quizView";
 import Dashboard from "./dashboard";
+import QuizPage from "./QuizPage";
 
 const DashboardLayout = () => {
   return (
@@ -18,6 +19,8 @@ const DashboardLayout = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/quiz-view" element={<QuizView />} />
+            <Route path="/quiz-page" element={<QuizPage/>} />
+
           </Routes>
         </div>
       </div>

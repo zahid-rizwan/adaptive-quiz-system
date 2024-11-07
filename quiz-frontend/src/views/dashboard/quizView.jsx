@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { FaFlag } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 import { IoIosCheckmarkCircle } from "react-icons/io";
@@ -91,7 +91,7 @@ const QuizView = () => {
         style={{ scrollbarWidth: "none" }}
       >
         <p className="font-semibold text-lg text-primary">All Chapters</p>
-        <div className="w-full flex flex-wrap">
+        <Link to={"/quiz-page"}><div className="w-full flex flex-wrap">
           {Array.isArray(chapters) &&
             chapters.map((item, index) => (
               <div
@@ -106,14 +106,14 @@ const QuizView = () => {
                     {/* <div className="bg-white rounded-lg w-max px-3 text-primary text-sm font-medium py-1">
             {time}
           </div> */}
-                    <div className="w-full bg-[#7474c0a1] rounded-xl p-5  shadow-xl">
+                    <div className="w-full bg-primary rounded-xl p-5  shadow-xl">
                       <p className="text-white text-sm">{item.chapterName}</p>
                     </div>
                   </div>
                 </div>
               </div>
             ))}
-        </div>
+        </div></Link>
         {/* <div className="w-full flex gap-[20px] my-4">
           <img
             src={location?.state?.image}
