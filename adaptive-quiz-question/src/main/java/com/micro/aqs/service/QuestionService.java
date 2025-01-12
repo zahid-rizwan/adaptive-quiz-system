@@ -54,4 +54,8 @@ public class QuestionService {
         Question qus = questionRepository.findById(questionId).orElseThrow(()->new QuestionNotFoundException("Question not found with id "  + questionId));
         this.questionRepository.delete(qus);
     }
+
+    public List<Question> getQuestionByCategory(String category) {
+        return questionRepository.findByCategory(category).filter(questions -> !questions.isEmpty()).orElseThrow(()->new QuestionNotFoundException("there is no question in the category:"+ category));
+    }
 }

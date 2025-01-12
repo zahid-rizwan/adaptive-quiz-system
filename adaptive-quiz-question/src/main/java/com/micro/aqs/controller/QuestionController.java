@@ -36,5 +36,9 @@ public class QuestionController {
         this.questionService.deleteQuestion(questionId);
         return  new ResponseEntity<>("question delete successfully",HttpStatus.OK);
     }
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<Question>> getQuestionByCategory(@PathVariable String category){
+        return new ResponseEntity<>(questionService.getQuestionByCategory(category),HttpStatus.OK);
+    }
 
 }
